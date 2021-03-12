@@ -3,6 +3,7 @@
     <nav-bar />
     <v-main>
     <carousel />  
+    <test />
     <my-footer />
     </v-main>
 
@@ -13,6 +14,7 @@
 import Carousel from './components/Carousel';
 import NavBar from './components/NavBar';
 import MyFooter from './components/Footer';
+import Test from './components/Test'
 
 export default {
   name: 'App',
@@ -21,6 +23,7 @@ export default {
     Carousel,
     NavBar,
     MyFooter,
+    Test,
 
   },
 
