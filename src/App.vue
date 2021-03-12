@@ -2,59 +2,37 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="#03A9F4"
       dark
     >
-    <v-avatar
-  color="primary"
-  size="56"
-></v-avatar>
       <div class="d-flex align-center">
         <v-img
-          alt="Vuetify Logo"
+          alt="Boat Charter"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="./assets/logo2.png"
           transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
+          width="80"
         />
       </div>
 
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+    <carousel />  
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Carousel from './components/Carousel';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    Carousel
   },
 
   data: () => ({
@@ -62,3 +40,6 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+</style>
