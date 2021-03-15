@@ -15,9 +15,8 @@
         />
       </div>
       <v-tabs align-with-title>
-          <v-tab>LINK 1</v-tab>
-          <v-tab>LINK 2</v-tab>
-          <v-tab>LINK 3</v-tab>
+          <v-tab to="/home">Home</v-tab>
+          <v-tab to="/yachts">Yachts</v-tab>
         </v-tabs>
 
     </v-app-bar>
@@ -36,6 +35,10 @@
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
+
 .link:hover {
     color:rgba(220,220,220);
 

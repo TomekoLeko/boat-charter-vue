@@ -1,30 +1,24 @@
 <template>
   <v-app>
-    <nav-bar />
+<nav-bar />
     <v-main>
-    <carousel />  
-    <test />
-    <my-footer />
+    <router-view />
     </v-main>
-
+<my-footer />
   </v-app>
 </template>
 
 <script>
-import Carousel from './components/Carousel';
-import NavBar from './components/NavBar';
-import MyFooter from './components/Footer';
-import Test from './components/Test'
+
+import NavBar from './components/NavBar'
+import MyFooter from './components/Footer'
 
 export default {
   name: 'App',
 
   components: {
-    Carousel,
     NavBar,
-    MyFooter,
-    Test,
-
+    MyFooter
   },
 
   data: () => ({

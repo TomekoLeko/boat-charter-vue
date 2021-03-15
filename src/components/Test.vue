@@ -1,5 +1,5 @@
 <template>
-<div class="my-test">
+<div>
     Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
     Nemo, perferendis tenetur dolorem officia perspiciatis aut pariatur officiis cumque, ipsa eius, 
     eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate! Odit mollitia incidunt deleniti quas reiciendis,
@@ -30,7 +30,4 @@
 </script>
 
 <style scoped>
-.my-test {
- padding: 2vw 
-}
 </style>
