@@ -5,13 +5,14 @@ import vuetify from './plugins/vuetify';
 
 import Yachts from './components/Yachts';
 import Home from './components/Home'
+import AboutUs from './components/AboutUs'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
   { path: '*', component: Home },
-  { path: '/home', redirect: '/' },
+  { path: '/about', component: AboutUs },
   { path: '/yachts', component: Yachts }
 ]
 const router = new VueRouter({

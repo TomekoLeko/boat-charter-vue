@@ -1,18 +1,17 @@
 <template>
-<div class="home">
-<carousel />
-<test class="main-margin" />
+<div class="main-margin">
+    <h1>About Us </h1>
+<test />
 </div>
 </template>
 
 
 <script>
-import Carousel from './Carousel';
+
 import Test from './Test';
   export default {
-    name: 'Home',
+    name: 'AboutUs',
     components: {
-    Carousel,
     Test,
     },
  data () {
@@ -24,6 +23,4 @@ import Test from './Test';
 </script>
 
 <style scoped>
-
-
 </style>

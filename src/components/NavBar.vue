@@ -5,6 +5,7 @@
       dark
     >
       <div class="d-flex align-center">
+        <router-link to="/">
         <v-img
           alt="Boat Charter"
           class="shrink mr-2"
@@ -13,10 +14,12 @@
           transition="scale-transition"
           width="80"
         />
+        </router-link>
       </div>
       <v-tabs align-with-title>
-          <v-tab to="/home">Home</v-tab>
+          <v-tab to="/">Home</v-tab>
           <v-tab to="/yachts">Yachts</v-tab>
+          <v-tab to="/about">About us</v-tab>
         </v-tabs>
 
     </v-app-bar>

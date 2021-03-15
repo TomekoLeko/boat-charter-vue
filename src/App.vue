@@ -1,7 +1,7 @@
 <template>
   <v-app>
 <nav-bar />
-    <v-main class="main-margin">
+    <v-main>
     <router-view />
     </v-main>
 <my-footer />
@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .main-margin {
   margin: 2vw;
 }

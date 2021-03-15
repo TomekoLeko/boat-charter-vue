@@ -1,5 +1,5 @@
 <template>
-<div class="main">
+<div class="main-margin">
 <h1> Our Yachts </h1>
 <test />
 <div class="d-flex flex-wrap justify-space-around">
