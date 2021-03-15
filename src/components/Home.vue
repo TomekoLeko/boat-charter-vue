@@ -1,7 +1,7 @@
 <template>
 <div class="home">
 <carousel />
-<test class="my-test" />
+<test />
 </div>
 </template>
 
@@ -25,7 +25,5 @@ import Test from './Test';
 
 <style scoped>
 
-.my-test {
- padding: 2vw 
-}
+
 </style>
