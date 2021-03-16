@@ -6,6 +6,19 @@ import vuetify from './plugins/vuetify';
 import Yachts from './components/Yachts';
 import Home from './components/Home'
 import AboutUs from './components/AboutUs'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+    }
+  }
+})
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -23,5 +36,6 @@ const router = new VueRouter({
 new Vue({
   vuetify,
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
