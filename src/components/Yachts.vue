@@ -1,11 +1,11 @@
 <template>
 <div class="main-margin">
 <h1> Our Yachts </h1>
-<test />
+Yachts available.
 <div class="d-flex flex-wrap justify-space-around">
   <div v-for="yacht in yachts" :key="yacht">
 
-  <yacht-card :cardTitle="yacht.title" :cardSubtitle="yacht.subtitle" :cardText="yacht.text" />
+  <yacht-card :cardTitle="yacht.title" :cardSubtitle="yacht.subtitle" :cardText="yacht.text" :cardPpl="yacht.ppl" :cardBedrooms="yacht.bedrooms" :cardPrice="yacht.price" />
   </div>
 </div>
 
@@ -13,12 +13,10 @@
 </template>
 
 <script>
-import Test from './Test';
 import YachtCard from './YachtCard';
   export default {
     name: 'Yachts',
     components: {
-    Test,
     YachtCard,
        
     },

@@ -26,9 +26,7 @@
       <span>Book this boat</span>
     </v-tooltip>
   </div>
-  </div>
-    
-
+    <div class="card-title">
     <v-card-title>
       {{cardTitle}}
     </v-card-title>
@@ -36,9 +34,60 @@
     <v-card-subtitle>
       {{cardSubtitle}}
     </v-card-subtitle>
+  </div>
 
+
+  </div>
+    
     <v-card-actions>
-      <v-btn
+         <v-tooltip bottom>
+      <template v-slot:activator="{ on, attrs }">
+   <div    
+   v-bind="attrs"
+   v-on="on">
+<v-badge
+        :content="cardBedrooms"
+        :value="ardBedrooms"
+        color="primary"
+        overlap
+      >
+        <v-icon>
+          mdi-door
+        </v-icon>
+      </v-badge> 
+
+   </div>
+      </template>
+      <span>{{cardBedrooms}} bedrooms on this boat.</span>
+    </v-tooltip>
+      <v-spacer></v-spacer>
+     <v-tooltip bottom>
+      <template v-slot:activator="{ on, attrs }">
+   <div    
+   v-bind="attrs"
+   v-on="on">
+               <v-badge
+        :content="cardPpl"
+        :value="cardPpl"
+        color="primary"
+        overlap
+      >
+        <v-icon>
+          mdi-account-group
+        </v-icon>
+      </v-badge> 
+
+   </div>
+      </template>
+      <span>Place for up to {{cardPpl}} people on this boat.</span>
+    </v-tooltip>
+
+
+
+
+
+      <v-spacer></v-spacer>
+    <v-btn
         color="orange lighten-2"
         text
       >
@@ -69,7 +118,7 @@
 
 <script>
   export default {
-  props: ['cardTitle','cardSubtitle', 'cardText'],
+  props: ['cardTitle','cardSubtitle', 'cardText', 'cardPpl', 'cardBedrooms', 'cardPrice'],
     data: () => ({
       show: false,
     }),
@@ -78,6 +127,7 @@
 
 
 <style scoped>
+
 .img-container {
   position: relative;
 }
@@ -85,7 +135,22 @@
   position: absolute;
   top: 0.5em;
   right: 0.5em;
-
+}
+.card-title {
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  color: white;
+}
+.card-people {
+    position: absolute;
+  bottom: 0.5em;
+  left: 0.5em;
+}
+.card-rooms {
+    position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
 }
 
 </style>
