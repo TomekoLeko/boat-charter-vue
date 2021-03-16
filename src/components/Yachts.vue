@@ -32,6 +32,9 @@ import YachtCard from './YachtCard';
        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
        aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
        Odit mollitia incidunt deleniti quas reiciendis,`,
+       bedrooms: 10,
+       ppl: 25,
+       price: 1000,
        img: '"../assets/yacht-2.jpg"',
        },
       {
@@ -41,6 +44,9 @@ import YachtCard from './YachtCard';
        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
        aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
        Odit mollitia incidunt deleniti quas reiciendis,`,
+       bedrooms: 1,
+       ppl: 2,
+       price: 900,
        img: '"../assets/yacht-1.jpg"',
        },
        {
@@ -50,6 +56,9 @@ import YachtCard from './YachtCard';
        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
        aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
        Odit mollitia incidunt deleniti quas reiciendis,`,
+      bedrooms: 1,
+       ppl: 4,
+       price: 500,
        img: '"../assets/yacht-2.jpg"'
        },
       {
@@ -59,6 +68,9 @@ import YachtCard from './YachtCard';
        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
        aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
        Odit mollitia incidunt deleniti quas reiciendis,`,
+         bedrooms: 2,
+       ppl: 4,
+       price: 100,
        img: '"../assets/yacht-1.jpg"'
        }, 
        {
@@ -68,6 +80,9 @@ import YachtCard from './YachtCard';
        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
        aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
        Odit mollitia incidunt deleniti quas reiciendis,`,
+      bedrooms: 4,
+       ppl: 8,
+       price: 100,
        img: '"../assets/yacht-2.jpg"'
        }
      ]

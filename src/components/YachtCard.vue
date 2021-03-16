@@ -3,10 +3,31 @@
     class="mx-auto mt-10"
     max-width="344"
   >
+  <div class="img-container">
     <v-img
       src="../assets/yacht-2.jpg"
       height="200px"
     ></v-img>
+    <div class="booking-button">
+   <v-tooltip bottom>
+      <template v-slot:activator="{ on, attrs }">
+           <v-btn
+        class="ma-2"
+        color="primary"
+        dark
+        v-bind="attrs"
+          v-on="on"
+      >
+        <v-icon dark>
+          mdi-calendar-cursor
+        </v-icon>
+      </v-btn>
+      </template>
+      <span>Book this boat</span>
+    </v-tooltip>
+  </div>
+  </div>
+    
 
     <v-card-title>
       {{cardTitle}}
@@ -21,11 +42,10 @@
         color="orange lighten-2"
         text
       >
-        Explore
+        Read more
       </v-btn>
 
       <v-spacer></v-spacer>
-
       <v-btn
         icon
         @click="show = !show"
@@ -58,5 +78,14 @@
 
 
 <style scoped>
+.img-container {
+  position: relative;
+}
+.booking-button {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5śem;
+
+}
 
 </style>
