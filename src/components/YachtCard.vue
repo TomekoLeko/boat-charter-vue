@@ -84,7 +84,7 @@
 .booking-button {
   position: absolute;
   top: 0.5em;
-  right: 0.5śem;
+  right: 0.5em;
 
 }
 
