@@ -47,7 +47,7 @@
    v-on="on">
 <v-badge
         :content="cardBedrooms"
-        :value="ardBedrooms"
+        :value="cardBedrooms"
         color="primary"
         overlap
       >
@@ -81,14 +81,9 @@
       </template>
       <span>Place for up to {{cardPpl}} people on this boat.</span>
     </v-tooltip>
-
-
-
-
-
       <v-spacer></v-spacer>
     <v-btn
-        color="orange lighten-2"
+        color="primary"
         text
       >
         Read more
