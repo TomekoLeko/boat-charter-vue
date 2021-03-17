@@ -36,7 +36,6 @@
     </v-card-subtitle>
   </div>
 
-
   </div>
     
     <v-card-actions>
@@ -82,12 +81,9 @@
       <span>Place for up to {{cardPpl}} people on this boat.</span>
     </v-tooltip>
       <v-spacer></v-spacer>
-    <v-btn
-        color="primary"
-        text
-      >
-        Read more
-      </v-btn>
+    <div  class="card-price">
+      {{cardPrice}}€ / day
+    </div>
 
       <v-spacer></v-spacer>
       <v-btn
@@ -137,15 +133,10 @@
   left: 0.5em;
   color: white;
 }
-.card-people {
-    position: absolute;
-  bottom: 0.5em;
-  left: 0.5em;
-}
-.card-rooms {
-    position: absolute;
-  bottom: 0.5em;
-  right: 0.5em;
+
+.card-price {
+color: #2B81D6;
+font-weight: bold;
 }
 
 </style>
