@@ -1,14 +1,37 @@
 <template>
-<div class="main-margin">
-  
-  <div>
-<h1> Our Yachts </h1>
-Yachts available.
+<div>
+<div class="filter-banner">
+  <v-img class="map-banner-img" src="../assets/banner-map.png" />
+  <div id="sotogrande">
+          <v-checkbox
+              v-model="sotogrande"
+              label="Sotogrande"
+              hide-details
+            ></v-checkbox>
   </div>
-
- <div class="temporary-filter-container">
-    <v-row>
-        <h2>Filters (temporary position)</h2>
+    <div id="estepona">
+          <v-checkbox
+              v-model="estepona"
+              label="Estepona"
+              hide-details
+            ></v-checkbox>
+  </div>
+      <div id="puerto-banus">
+          <v-checkbox
+              v-model="banus"
+              label="Puerto Banus"
+              hide-details
+            ></v-checkbox>
+  </div>
+        <div id="marbella">
+          <v-checkbox
+              v-model="marbella"
+              label="Marbella"
+              hide-details
+            ></v-checkbox>
+  </div>
+<div class="filters-container">
+      <v-row>
       <v-col cols="2">
         <v-text-field
           label="For at least"
@@ -21,6 +44,7 @@ Yachts available.
         :hint="priceRangeHint"
         max="2000"
         min="0"
+        step="100"
         v-model="priceRange"
         :thumb-color="primary"
         :thumb-size="50"
@@ -33,16 +57,25 @@ Yachts available.
       </v-col>
 
     </v-row>
- </div>
+</div>
+</div>
+<div class="main-margin">
+
+  <!-- <div>
+<h1> Our Yachts </h1>
+Yachts available.
+  </div> -->
+
 
 
     
 <div class="d-flex flex-wrap justify-space-around">
   <div v-for="yacht in filteredYachts" :key="yacht">
-  <yacht-card :cardTitle="yacht.title" :cardSubtitle="yacht.subtitle" :cardText="yacht.text" :cardPpl="yacht.ppl" :cardBedrooms="yacht.bedrooms" :cardPrice="yacht.price" />
+  <yacht-card :cardTitle="yacht.title" :cardSubtitle="yacht.subtitle" :cardText="yacht.text" :cardPpl="yacht.ppl" :cardBedrooms="yacht.bedrooms" :cardPrice="yacht.price" :cardPort="yacht.port" />
   </div>
 </div>
 
+</div>
 </div>
 </template>
 
@@ -55,7 +88,11 @@ import YachtCard from './YachtCard';
        
     },
  data () {
-      return { 
+      return {  
+     sotogrande: true,
+     marbella: true,
+     estepona: true,
+     banus: true,   
      howManyPeople: null,
      priceRange: [0, 2000],
      filteredYachts: null,        
@@ -70,6 +107,7 @@ import YachtCard from './YachtCard';
        bedrooms: 10,
        ppl: 25,
        price: 1000,
+       port: 'banus',
        img: '"../assets/yacht-2.jpg"',
        },
       {
@@ -82,6 +120,7 @@ import YachtCard from './YachtCard';
        bedrooms: 1,
        ppl: 2,
        price: 900,
+       port: 'banus',
        img: '"../assets/yacht-1.jpg"',
        },
        {
@@ -94,6 +133,7 @@ import YachtCard from './YachtCard';
       bedrooms: 1,
        ppl: 4,
        price: 500,
+       port: 'marbella',
        img: '"../assets/yacht-2.jpg"'
        },
       {
@@ -103,9 +143,10 @@ import YachtCard from './YachtCard';
        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
        aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
        Odit mollitia incidunt deleniti quas reiciendis,`,
-         bedrooms: 2,
+       bedrooms: 2,
        ppl: 4,
        price: 100,
+       port: 'estepona',
        img: '"../assets/yacht-1.jpg"'
        }, 
        {
@@ -118,6 +159,7 @@ import YachtCard from './YachtCard';
       bedrooms: 4,
        ppl: 8,
        price: 100,
+       port: 'marbella',
        img: '"../assets/yacht-2.jpg"'
        },
         {
@@ -127,9 +169,10 @@ import YachtCard from './YachtCard';
        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
        aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
        Odit mollitia incidunt deleniti quas reiciendis,`,
-      bedrooms: 8,
+       bedrooms: 8,
        ppl: 15,
        price: 1500,
+       port: 'marbella',
        img: '"../assets/yacht-2.jpg"'
        },
           {
@@ -139,9 +182,10 @@ import YachtCard from './YachtCard';
        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
        aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
        Odit mollitia incidunt deleniti quas reiciendis,`,
-      bedrooms: 1,
+       bedrooms: 1,
        ppl: 2,
        price: 200,
+       port: 'sotogrande',
        img: '"../assets/yacht-2.jpg"'
        }
      ]
@@ -162,6 +206,19 @@ import YachtCard from './YachtCard';
         this.filteredYachts = this.yachts.filter(yacht => yacht.ppl > this.howManyPeople) 
         this.filteredYachts = this.filteredYachts.filter(yacht => yacht.price > this.priceRange[0])
         this.filteredYachts = this.filteredYachts.filter(yacht => yacht.price < this.priceRange[1])
+        if(!this.banus) {
+        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.port != 'banus')
+        }
+        if(!this.marbella) {
+        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.port != 'marbella')
+        }
+        if(!this.estepona) {
+        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.port != 'estepona')
+        }
+        if(!this.sotogrande) {
+        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.port != 'sotogrande')
+        }
+        
        }
      },
      watch: {
@@ -175,16 +232,67 @@ import YachtCard from './YachtCard';
       handler() {
       this.filterYachts()
       }
-    }
+    },
+    banus: {
+      handler() {
+      this.filterYachts()
+      }
+    },
+    estepona: {
+      handler() {
+      this.filterYachts()
+      }
+    },
+    marbella: {
+    handler() {
+      this.filterYachts()
+      }
      },
- 
+    sotogrande: {
+    handler() {
+      this.filterYachts()
+      }
+     },
+  },
   }
 </script>
 <style scoped>
 .card-right-margin {
   margin-right: 2vw;
 }
-.temporary-filter-container {
-  margin-top: 4em;
+.filter-banner {
+  position: relative;
+  width: 100%;
+  /* background-image: url("../assets/banner-map.png"); */
+
 }
+.filters-container {
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+}
+#sotogrande {
+  position: absolute;
+  bottom: 15%;
+  left: 5%;
+}
+#estepona {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+}
+#puerto-banus {
+  position: absolute;
+  top: 4%;
+  left: 60%;
+}
+#marbella {
+  position: absolute;
+  top: 3%;
+  left: 76%;
+}
+/* .map-banner-img {
+  width: 100%;
+} */
 </style>

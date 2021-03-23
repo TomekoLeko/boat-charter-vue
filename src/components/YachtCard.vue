@@ -28,11 +28,11 @@
   </div>
     <div class="card-title">
     <v-card-title>
-      {{cardTitle}}
+      {{cardTitle}} 
     </v-card-title>
 
     <v-card-subtitle>
-      {{cardSubtitle}}
+      {{cardSubtitle}} 
     </v-card-subtitle>
   </div>
 
@@ -109,7 +109,7 @@
 
 <script>
   export default {
-  props: ['cardTitle','cardSubtitle', 'cardText', 'cardPpl', 'cardBedrooms', 'cardPrice'],
+  props: ['cardTitle','cardSubtitle', 'cardText', 'cardPpl', 'cardBedrooms', 'cardPrice', 'cardPort',],
     data: () => ({
       show: false,
     }),
