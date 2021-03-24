@@ -80,6 +80,10 @@ Yachts available.
 </template>
 
 <script>
+import Vue from 'vue';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+Vue.use(VueAxios,axios)
 import YachtCard from './YachtCard';
   export default {
     name: 'Yachts',
@@ -95,107 +99,18 @@ import YachtCard from './YachtCard';
      banus: true,   
      howManyPeople: null,
      priceRange: [0, 2000],
-     filteredYachts: null,        
-     yachts:[
-       {
-       title: 'Yacht 1',
-       subtitle: 'Subtitle of yacht nr 1',
-       text: `This is Yacht 1 description, Lorem ipsum dolor sit, amet consectetur adipisicing
-       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
-       aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
-       Odit mollitia incidunt deleniti quas reiciendis,`,
-       bedrooms: 10,
-       ppl: 25,
-       price: 1000,
-       port: 'banus',
-       img: '"../assets/yacht-2.jpg"',
-       },
-      {
-       title: 'Yacht 2',
-       subtitle: 'Subtitle of yacht nr 2',
-       text: `This is Yacht 2 description, Lorem ipsum dolor sit, amet consectetur adipisicing
-       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
-       aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
-       Odit mollitia incidunt deleniti quas reiciendis,`,
-       bedrooms: 1,
-       ppl: 2,
-       price: 900,
-       port: 'banus',
-       img: '"../assets/yacht-1.jpg"',
-       },
-       {
-       title: 'Yacht 3',
-       subtitle: 'Subtitle of yacht nr 3',
-       text: `This is Yacht 3 description, Lorem ipsum dolor sit, amet consectetur adipisicing
-       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
-       aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
-       Odit mollitia incidunt deleniti quas reiciendis,`,
-      bedrooms: 1,
-       ppl: 4,
-       price: 500,
-       port: 'marbella',
-       img: '"../assets/yacht-2.jpg"'
-       },
-      {
-       title: 'Yacht 4',
-       subtitle: 'Subtitle of yacht nr 4',
-       text: `This is Yacht 4 description, Lorem ipsum dolor sit, amet consectetur adipisicing
-       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
-       aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
-       Odit mollitia incidunt deleniti quas reiciendis,`,
-       bedrooms: 2,
-       ppl: 4,
-       price: 100,
-       port: 'estepona',
-       img: '"../assets/yacht-1.jpg"'
-       }, 
-       {
-       title: 'Yacht 5',
-       subtitle: 'Subtitle of yacht nr 5',
-       text: `This is Yacht 5 description, Lorem ipsum dolor sit, amet consectetur adipisicing
-       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
-       aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
-       Odit mollitia incidunt deleniti quas reiciendis,`,
-      bedrooms: 4,
-       ppl: 8,
-       price: 100,
-       port: 'marbella',
-       img: '"../assets/yacht-2.jpg"'
-       },
-        {
-       title: 'Yacht 6',
-       subtitle: 'Subtitle of yacht nr 6',
-       text: `This is Yacht 6 description, Lorem ipsum dolor sit, amet consectetur adipisicing
-       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
-       aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
-       Odit mollitia incidunt deleniti quas reiciendis,`,
-       bedrooms: 8,
-       ppl: 15,
-       price: 1500,
-       port: 'marbella',
-       img: '"../assets/yacht-2.jpg"'
-       },
-          {
-       title: 'Yacht 7',
-       subtitle: 'Subtitle of yacht nr 7',
-       text: `This is Yacht 7 description, Lorem ipsum dolor sit, amet consectetur adipisicing
-       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo, perferendis tenetur dolorem officia perspiciatis
-       aut pariatur officiis cumque, ipsa eius, eum nam debitis obcaecati voluptates assumenda. Sit minus omnis cupiditate!
-       Odit mollitia incidunt deleniti quas reiciendis,`,
-       bedrooms: 1,
-       ppl: 2,
-       price: 200,
-       port: 'sotogrande',
-       img: '"../assets/yacht-2.jpg"'
-       }
-     ]
+     filteredYachts: null,    
+     yachts: []    
       }
     },
     mounted: function () {
-    this.filteredYachts = this.yachts
+        Vue.axios.get('https://boat-charter-vue-default-rtdb.europe-west1.firebasedatabase.app/boats.json').then((resp)=>{
+        console.log(resp.data)
+        this.yachts = resp.data
+        this.filteredYachts = this.yachts
+      })   
 },
   computed: {
-    
     priceRangeHint: function () {
 
       return 'Price from ' +  this.priceRange[0] + '€ to ' + this.priceRange[1] + '€'
