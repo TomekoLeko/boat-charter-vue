@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="main-container">
 <div class="filter-banner">
   <v-img class="map-banner-img" src="../assets/banner-map.png" />
   <div id="sotogrande">
@@ -9,7 +9,7 @@
               hide-details
             ></v-checkbox>
   </div>
-    <div id="estepona">
+   <div id="estepona">
           <v-checkbox
               v-model="estepona"
               label="Estepona"
@@ -30,14 +30,66 @@
               hide-details
             ></v-checkbox>
   </div>
-<div class="filters-container">
-      <v-row>
-      <v-col cols="2">
+<v-container elevation-1  class="filters-container">
+<v-row>
+  <v-col cols="4">
+        <v-container>
         <v-text-field
           label="For at least"
           suffix="people"
           v-model="howManyPeople"
         ></v-text-field>
+        </v-container>
+        <v-container>
+        <v-text-field
+          label="At least"
+          suffix="bedrooms"
+          v-model="howManyBedrooms"
+        ></v-text-field>
+        </v-container>
+  </v-col>
+  <v-spacer></v-spacer>
+  <v-col cols="6" >
+    <v-container mt-16>
+        <v-range-slider
+        :hint="priceRangeHint"
+        max="2000"
+        min="0"
+        step="100"
+        v-model="priceRange"
+        :thumb-color="primary"
+        :thumb-size="50"
+        thumb-label="always"
+        >
+          <template v-slot:thumb-label="{ value }">
+            {{ value }}€
+          </template>
+      </v-range-slider>
+    </v-container>
+
+
+  </v-col>
+</v-row> 
+
+</v-container>
+
+      <!-- <v-row>
+      <v-col cols="2">
+        <v-container>
+          <v-text-field
+          label="For at least"
+          suffix="people"
+          v-model="howManyPeople"
+        ></v-text-field>
+        </v-container>
+        <v-container>
+        <v-text-field
+          label="At least"
+          suffix="bedrooms"
+          v-model="howManyBedrooms"
+        ></v-text-field>
+        </v-container>
+
       </v-col>
       <v-col cols="4">
         <v-range-slider
@@ -56,19 +108,11 @@
       </v-range-slider>
       </v-col>
 
-    </v-row>
-</div>
+    </v-row> -->
+
 </div>
 <div class="main-margin">
 
-  <!-- <div>
-<h1> Our Yachts </h1>
-Yachts available.
-  </div> -->
-
-
-
-    
 <div class="d-flex flex-wrap justify-space-around">
   <div v-for="yacht in filteredYachts" :key="yacht">
   <yacht-card :cardTitle="yacht.title" :cardSubtitle="yacht.subtitle" :cardText="yacht.text" :cardPpl="yacht.ppl" :cardBedrooms="yacht.bedrooms" :cardPrice="yacht.price" :cardPort="yacht.port" />
@@ -88,8 +132,7 @@ import YachtCard from './YachtCard';
   export default {
     name: 'Yachts',
     components: {
-    YachtCard,
-       
+    YachtCard,  
     },
  data () {
       return {  
@@ -98,9 +141,10 @@ import YachtCard from './YachtCard';
      estepona: true,
      banus: true,   
      howManyPeople: null,
+     howManyBedrooms: null,
      priceRange: [0, 2000],
      filteredYachts: null,    
-     yachts: []    
+     yachts: [{title: '',  subtitle: '',bedrooms:1, ppl:1, price:1, port: '', img: ''}]   
       }
     },
     mounted: function () {
@@ -112,15 +156,15 @@ import YachtCard from './YachtCard';
 },
   computed: {
     priceRangeHint: function () {
-
       return 'Price from ' +  this.priceRange[0] + '€ to ' + this.priceRange[1] + '€'
     }
   },
     methods: {
        filterYachts() {
-        this.filteredYachts = this.yachts.filter(yacht => yacht.ppl > this.howManyPeople) 
-        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.price > this.priceRange[0])
-        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.price < this.priceRange[1])
+        this.filteredYachts = this.yachts.filter(yacht => yacht.ppl >= this.howManyPeople) 
+        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.bedrooms >= this.howManyBedrooms) 
+        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.price >= this.priceRange[0])
+        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.price <= this.priceRange[1])
         if(!this.banus) {
         this.filteredYachts = this.filteredYachts.filter(yacht => yacht.port != 'banus')
         }
@@ -141,7 +185,11 @@ import YachtCard from './YachtCard';
       handler() {
       this.filterYachts()
       } 
-
+    },
+        howManyBedrooms: {
+      handler() {
+      this.filterYachts()
+      } 
     },
      priceRange: {
       handler() {
@@ -172,6 +220,9 @@ import YachtCard from './YachtCard';
   }
 </script>
 <style scoped>
+.main-container {
+  position: relative;
+}
 .card-right-margin {
   margin-right: 2vw;
 }
@@ -182,10 +233,16 @@ import YachtCard from './YachtCard';
 
 }
 .filters-container {
-  width: 90%;
+  width: 60%;
   position: absolute;
-  top: 50%;
-  left: 30%;
+  top: 30%;
+  left: 25%;
+}
+.people-and-bedrooms-filter-container{
+  width: 12em;
+}
+.range-slider-container {
+
 }
 #sotogrande {
   position: absolute;
