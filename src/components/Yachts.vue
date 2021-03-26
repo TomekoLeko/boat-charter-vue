@@ -77,7 +77,7 @@
 
 <div class="d-flex flex-wrap justify-space-around">
   <div v-for="yacht in filteredYachts" :key="yacht">
-  <yacht-card :cardTitle="yacht.title" :cardSubtitle="yacht.subtitle" :cardText="yacht.text" :cardPpl="yacht.ppl" :cardBedrooms="yacht.bedrooms" :cardPrice="yacht.price" :cardPort="yacht.port" />
+  <yacht-card :cardTitle="yacht.title" :cardSubtitle="yacht.subtitle" :cardText="yacht.text" :cardPpl="yacht.ppl" :cardBedrooms="yacht.bedrooms" :cardPrice="yacht.price" :cardPort="yacht.port" :cardAdditional="yacht.additional" />
   </div>
 </div>
 
@@ -108,7 +108,7 @@ import YachtCard from './YachtCard';
      howManyBedrooms: null,
      priceRange: [0, 2000],
      filteredYachts: null,   
-     yachts: [{title: '',  subtitle: '',bedrooms:1, ppl:1, price:1, port: '', img: ''}]   
+     yachts: [{title: '',  subtitle: '',bedrooms:1, ppl:1, price:1, port: '', additional: [], img: ''}]   
       }
     },
     mounted: function () {

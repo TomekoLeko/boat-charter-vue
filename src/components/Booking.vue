@@ -98,7 +98,7 @@
 </v-col>
 <v-col cols="12" sm="6">
     <v-autocomplete
-        :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
+        :items="additionalNames"
         label="Additional services"
         multiple
      ></v-autocomplete>
@@ -135,7 +135,17 @@
     data: () => ({
     bookingPpl: 0,
     }),
-   props: ['cardTitle','cardSubtitle', 'cardText', 'cardPpl', 'cardBedrooms', 'cardPrice', 'cardPort', 'dialog'],
+   props: ['cardTitle','cardSubtitle', 'cardText', 'cardPpl', 'cardBedrooms', 'cardPrice', 'cardPort', 'dialog', 'cardAdditional'],
+   computed: {
+       additionalNames() {
+           let names = []
+           for(const additional of this.cardAdditional) {
+               let namePlusPrice = additional.name +' ' + additional.price + '€'
+               names.push(namePlusPrice)
+           }
+           return names
+       }
+   },
      methods: {
              setBookingPpl() {
            this.bookingPpl = this.cardPpl;
