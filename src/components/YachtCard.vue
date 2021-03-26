@@ -9,7 +9,7 @@
       height="200px"
     ></v-img>
     <div class="booking-button">
-    <booking  >
+    <booking :dialog="booking"  :cardTitle="cardTitle" :cardSubtitle="cardSubtitle" :cardText="cardText" :cardPpl="cardPpl" :cardBedrooms="cardBedrooms" :cardPrice="cardPrice" :cardPort="cardPort"  >
 
     </booking>
   </div>
