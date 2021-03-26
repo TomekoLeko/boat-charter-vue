@@ -72,44 +72,6 @@
 </v-row> 
 
 </v-container>
-
-      <!-- <v-row>
-      <v-col cols="2">
-        <v-container>
-          <v-text-field
-          label="For at least"
-          suffix="people"
-          v-model="howManyPeople"
-        ></v-text-field>
-        </v-container>
-        <v-container>
-        <v-text-field
-          label="At least"
-          suffix="bedrooms"
-          v-model="howManyBedrooms"
-        ></v-text-field>
-        </v-container>
-
-      </v-col>
-      <v-col cols="4">
-        <v-range-slider
-        :hint="priceRangeHint"
-        max="2000"
-        min="0"
-        step="100"
-        v-model="priceRange"
-        :thumb-color="primary"
-        :thumb-size="50"
-        thumb-label="always"
-        >
-          <template v-slot:thumb-label="{ value }">
-            {{ value }}€
-          </template>
-      </v-range-slider>
-      </v-col>
-
-    </v-row> -->
-
 </div>
 <div class="main-margin">
 
@@ -120,6 +82,7 @@
 </div>
 
 </div>
+
 </div>
 </template>
 
@@ -133,6 +96,7 @@ import YachtCard from './YachtCard';
     name: 'Yachts',
     components: {
     YachtCard,  
+  
     },
  data () {
       return {  
@@ -143,7 +107,7 @@ import YachtCard from './YachtCard';
      howManyPeople: null,
      howManyBedrooms: null,
      priceRange: [0, 2000],
-     filteredYachts: null,    
+     filteredYachts: null,   
      yachts: [{title: '',  subtitle: '',bedrooms:1, ppl:1, price:1, port: '', img: ''}]   
       }
     },

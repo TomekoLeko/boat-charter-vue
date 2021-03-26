@@ -9,22 +9,9 @@
       height="200px"
     ></v-img>
     <div class="booking-button">
-   <v-tooltip bottom>
-      <template v-slot:activator="{ on, attrs }">
-           <v-btn
-        class="ma-2"
-        color="primary"
-        dark
-        v-bind="attrs"
-          v-on="on"
-      >
-        <v-icon dark>
-          mdi-calendar-cursor
-        </v-icon>
-      </v-btn>
-      </template>
-      <span>Book this boat</span>
-    </v-tooltip>
+    <booking  >
+
+    </booking>
   </div>
     <div class="card-title">
     <v-card-title>
@@ -108,10 +95,16 @@
 
 
 <script>
+import Booking from './Booking';
+
   export default {
+       components: {  
+    Booking,
+    },
   props: ['cardTitle','cardSubtitle', 'cardText', 'cardPpl', 'cardBedrooms', 'cardPrice', 'cardPort',],
     data: () => ({
       show: false,
+      booking: false,
     }),
   }
 </script>
@@ -124,8 +117,8 @@
 }
 .booking-button {
   position: absolute;
-  top: 0.5em;
-  right: 0.5em;
+  top: 2em;
+  right: 2rem;
 }
 .card-title {
   position: absolute;
