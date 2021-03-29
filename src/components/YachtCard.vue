@@ -9,17 +9,17 @@
       height="200px"
     ></v-img>
     <div class="booking-button">
-    <booking :dialog="booking"  :cardTitle="cardTitle" :cardSubtitle="cardSubtitle" :cardText="cardText" :cardPpl="cardPpl" :cardBedrooms="cardBedrooms" :cardPrice="cardPrice" :cardPort="cardPort" :cardAdditional="cardAdditional"  >
+    <booking :dialog="booking"  :yacht="yacht"  >
 
     </booking>
   </div>
     <div class="card-title">
     <v-card-title>
-      {{cardTitle}} 
+      {{yacht.title}} 
     </v-card-title>
 
     <v-card-subtitle>
-      {{cardSubtitle}} 
+      {{yacht.subtitle}} 
     </v-card-subtitle>
   </div>
 
@@ -32,8 +32,8 @@
    v-bind="attrs"
    v-on="on">
 <v-badge
-        :content="cardBedrooms"
-        :value="cardBedrooms"
+        :content="yacht.bedrooms"
+        :value="yacht.bedrooms"
         color="primary"
         overlap
       >
@@ -44,7 +44,7 @@
 
    </div>
       </template>
-      <span>{{cardBedrooms}} bedrooms on this boat.</span>
+      <span>{{yacht.bedrooms}} bedrooms on this boat.</span>
     </v-tooltip>
       <v-spacer></v-spacer>
      <v-tooltip bottom>
@@ -53,8 +53,8 @@
    v-bind="attrs"
    v-on="on">
                <v-badge
-        :content="cardPpl"
-        :value="cardPpl"
+        :content="yacht.ppl"
+        :value="yacht.ppl"
         color="primary"
         overlap
       >
@@ -65,11 +65,11 @@
 
    </div>
       </template>
-      <span>Place for up to {{cardPpl}} people on this boat.</span>
+      <span>Place for up to {{yacht.pl}} people on this boat.</span>
     </v-tooltip>
       <v-spacer></v-spacer>
     <div  class="card-price">
-      {{cardPrice}}€ / day
+      {{yacht.price}}€ / day
     </div>
 
       <v-spacer></v-spacer>
@@ -86,7 +86,7 @@
         <v-divider></v-divider>
 
         <v-card-text>
-          {{cardText}}
+          {{yacht.text}}
         </v-card-text>
       </div>
     </v-expand-transition>
@@ -101,7 +101,7 @@ import Booking from './Booking';
        components: {  
     Booking,
     },
-  props: ['cardTitle','cardSubtitle', 'cardText', 'cardPpl', 'cardBedrooms', 'cardPrice', 'cardPort', 'cardAdditional'],
+  props: ['yacht'],
     data: () => ({
       show: false,
       booking: false,

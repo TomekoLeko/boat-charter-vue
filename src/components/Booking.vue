@@ -20,7 +20,7 @@
       </template>
       <v-card>
         <v-card-title>
-          <span class="headline">Booking: {{cardTitle}}</span>
+          <span class="headline">Booking: {{yacht.title}}</span>
         </v-card-title>
         <v-card-text>
           <v-row>
@@ -77,7 +77,7 @@
         track-color="grey"
         always-dirty
         min="0"
-        :max="cardPpl"
+        :max="yacht.ppl"
       >
         <template v-slot:prepend>
           <v-icon
@@ -143,11 +143,11 @@ import Calendar from './Calendar'
     data: () => ({
     bookingPpl: 0,
     }),
-   props: ['cardTitle','cardSubtitle', 'cardText', 'cardPpl', 'cardBedrooms', 'cardPrice', 'cardPort', 'dialog', 'cardAdditional'],
+   props: ['yacht', 'dialog' ],
    computed: {
        additionalNames() {
            let names = []
-           for(const additional of this.cardAdditional) {
+           for(const additional of this.yacht.additional) {
                let namePlusPrice = additional.name +' ' + additional.price + '€'
                names.push(namePlusPrice)
            }
@@ -156,7 +156,7 @@ import Calendar from './Calendar'
    },
      methods: {
              setBookingPpl() {
-           this.bookingPpl = this.cardPpl;
+           this.bookingPpl = this.yacht.ppl;
            },
     decrement () {
         this.bookingPpl--

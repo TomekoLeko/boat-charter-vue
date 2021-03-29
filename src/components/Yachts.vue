@@ -77,7 +77,7 @@
 
 <div class="d-flex flex-wrap justify-space-around">
   <div v-for="yacht in filteredYachts" :key="yacht">
-  <yacht-card :cardTitle="yacht.title" :cardSubtitle="yacht.subtitle" :cardText="yacht.text" :cardPpl="yacht.ppl" :cardBedrooms="yacht.bedrooms" :cardPrice="yacht.price" :cardPort="yacht.port" :cardAdditional="yacht.additional" />
+  <yacht-card  :yacht="yacht" />
   </div>
 </div>
 
@@ -204,9 +204,6 @@ import YachtCard from './YachtCard';
 }
 .people-and-bedrooms-filter-container{
   width: 12em;
-}
-.range-slider-container {
-
 }
 #sotogrande {
   position: absolute;
