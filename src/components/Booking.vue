@@ -105,7 +105,12 @@
 </v-col>
       
             </v-row>
-          </v-container>
+<v-row>
+  <v-col cols="12" >
+<calendar> </calendar>
+  </v-col>
+</v-row>
+  </v-container>
           <small>*indicates required field</small>
         </v-card-text>
         <v-card-actions>
@@ -130,8 +135,12 @@
   </v-row>
 </template>
 <script>
+
+import Calendar from './Calendar'
+
   export default {
     name: 'Booking',
+    components: {Calendar},
     data: () => ({
     bookingPpl: 0,
     }),
