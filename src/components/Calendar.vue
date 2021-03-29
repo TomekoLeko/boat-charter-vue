@@ -2,23 +2,28 @@
   <v-row>
     <v-col
       cols="12"
-      sm="6"
+      sm="12"
     >
-      <v-date-picker
+      <v-card>
+      <v-date-picker 
         v-model="dates"
         range
+        full-width
       ></v-date-picker>
-    </v-col>
-    <v-col
-      cols="12"
-      sm="6"
-    >
+      </v-card>
       <v-text-field
         v-model="dateRangeText"
         label="Date range"
         prepend-icon="mdi-calendar"
         readonly
+        class="mt-10"
       ></v-text-field>
+    </v-col>
+    <v-col
+      cols="12"
+      sm="12"
+    >
+
       <!-- model: {{ dates }} -->
     </v-col>
   </v-row>

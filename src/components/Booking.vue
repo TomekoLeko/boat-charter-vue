@@ -3,7 +3,7 @@
     <v-dialog
       v-model="dialog"
       persistent
-      max-width="600px"
+      max-width="50vw"
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
@@ -17,31 +17,34 @@
             mdi-calendar-cursor
             </v-icon>
        </v-btn>
-
       </template>
       <v-card>
         <v-card-title>
           <span class="headline">Booking: {{cardTitle}}</span>
         </v-card-title>
         <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col
-                cols="12"
-              >
-                <v-text-field
-                  label="Name"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  label="Email*"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="6">
-  <v-card
+          <v-row>
+            <v-col cols="6">
+              <v-text-field
+                label="Name"
+                required
+              ></v-text-field>
+            </v-col>
+            <v-col cols="6">
+              <v-text-field
+                label="Email*"
+                required
+              ></v-text-field>
+            </v-col>
+           </v-row>
+           <v-row>
+            <v-col cols="6" >
+           
+              <calendar> </calendar>
+          
+            </v-col>
+ <v-col cols="6" >
+     <v-card
     class="mx-auto"
     max-width="600"
   >
@@ -95,22 +98,18 @@
       </v-slider>
     </v-card-text>
   </v-card>
-</v-col>
-<v-col cols="12" sm="6">
-    <v-autocomplete
-        :items="additionalNames"
-        label="Additional services"
-        multiple
-     ></v-autocomplete>
-</v-col>
-      
-            </v-row>
-<v-row>
-  <v-col cols="12" >
-<calendar> </calendar>
-  </v-col>
-</v-row>
-  </v-container>
+  <v-autocomplete
+      :items="additionalNames"
+      label="Additional services"
+      multiple
+      class="mt-10"
+    ></v-autocomplete>
+
+
+
+ </v-col>
+          </v-row>
+
           <small>*indicates required field</small>
         </v-card-text>
         <v-card-actions>
@@ -127,7 +126,7 @@
             text
             @click="dialog = false"
           >
-            Save
+            Book it
           </v-btn>
         </v-card-actions>
       </v-card>
