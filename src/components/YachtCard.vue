@@ -1,13 +1,17 @@
 <template>
+
+
   <v-card
     class="mx-auto mt-10"
     max-width="344"
   >
   <div class="img-container">
+    <router-link :to="{ name: 'yacht', params: { id: yacht.id, test: 'test' }}">
     <v-img
       src="../assets/yacht-2.jpg"
       height="200px"
     ></v-img>
+    </router-link>
     <div class="booking-button">
     <booking :dialog="booking"  :yacht="yacht"  >
 

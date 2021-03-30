@@ -5,6 +5,7 @@ import vuetify from './plugins/vuetify';
 
 import Yachts from './components/Yachts';
 import Home from './components/Home'
+import YachtPage from './components/YachtPage'
 import AboutUs from './components/AboutUs'
 import Vuex from 'vuex'
 
@@ -26,7 +27,9 @@ Vue.use(VueRouter)
 const routes = [
   { path: '*', component: Home },
   { path: '/about', component: AboutUs },
-  { path: '/yachts', component: Yachts }
+  { path: '/yachts', component: Yachts },
+  { path: '/yacht/:id', name: 'yacht', component: YachtPage }
+
 ]
 const router = new VueRouter({
   mode: 'history',

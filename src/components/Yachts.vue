@@ -108,7 +108,7 @@ import YachtCard from './YachtCard';
      howManyBedrooms: null,
      priceRange: [0, 2000],
      filteredYachts: null,   
-     yachts: [{title: '',  subtitle: '',bedrooms:1, ppl:1, price:1, port: '', additional: [], img: ''}]   
+     yachts: [{id: 0, title: '',  subtitle: '',bedrooms:1, ppl:1, price:1, port: '', additional: [], img: ''}]   
       }
     },
     mounted: function () {
