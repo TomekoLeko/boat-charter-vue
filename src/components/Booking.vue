@@ -16,6 +16,7 @@
             <v-icon dark>
             mdi-calendar-cursor
             </v-icon>
+            {{text}}
        </v-btn>
       </template>
       <v-card>
@@ -143,7 +144,7 @@ import Calendar from './Calendar'
     data: () => ({
     bookingPpl: 0,
     }),
-   props: ['yacht', 'dialog' ],
+   props: ['yacht', 'dialog', 'text' ],
    computed: {
        additionalNames() {
            let names = []
