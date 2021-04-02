@@ -1,14 +1,14 @@
 <template>
   <v-row justify="center">
     <v-dialog
-      v-model="dialog"
+      v-model="bookingDialog"
       persistent
       max-width="50vw"
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
         class="ma-2"
-        color="primary"
+        :color="color"
         dark
         v-bind="attrs"
           v-on="on"
@@ -74,7 +74,7 @@
       </v-row>
       <v-slider
         v-model="bookingPpl"
-        color="primary"
+        :color="color"
         track-color="grey"
         always-dirty
         min="0"
@@ -99,12 +99,12 @@
       </v-slider>
     </v-card-text>
   </v-card>
-  <v-autocomplete
+  <!-- <v-autocomplete
       :items="additionalNames"
       label="Additional services"
       multiple
       class="mt-10"
-    ></v-autocomplete>
+    ></v-autocomplete> -->
 
 
 
@@ -118,14 +118,14 @@
           <v-btn
             color="blue darken-1"
             text
-            @click="dialog = false"
+            @click="bookingDialog = false"
           >
             Close
           </v-btn>
           <v-btn
             color="blue darken-1"
             text
-            @click="dialog = false"
+            @click="bookingDialog = false"
           >
             Book it
           </v-btn>
@@ -143,6 +143,8 @@ import Calendar from './Calendar'
     components: {Calendar},
     data: () => ({
     bookingPpl: 0,
+    bookingDialog: null,
+    color: 'primary',
     }),
    props: ['yacht', 'dialog', 'text' ],
    computed: {
@@ -168,6 +170,7 @@ import Calendar from './Calendar'
   },
    mounted() {
            this.setBookingPpl()
+           this.bookingDialog = this.dialog
   }
 
   }

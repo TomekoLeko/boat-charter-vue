@@ -75,7 +75,7 @@
     <v-list flat>
       <v-subheader>ADDITIONAL SERVICES:</v-subheader>
         <v-list-item
-         v-for="item in yacht.additional" :key="item"
+         v-for="(item, id) in yacht.additional" :key="id"
         >
           <v-list-item-icon>
             <v-icon>
@@ -107,13 +107,13 @@ components: {YachtGallery, Booking},
  data () {
       return {  
     yacht: {},
+    booking: false,
     carouselIndex: 0,
       }
       },
     mounted: function () {
         let url = 'https://boat-charter-vue-default-rtdb.europe-west1.firebasedatabase.app/boats/' + this.$route.params.id + '.json'
         Vue.axios.get(url).then((resp)=>{
-        console.log(resp.data)
         this.yacht = resp.data
     })   
 },

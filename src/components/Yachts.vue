@@ -57,7 +57,7 @@
         min="0"
         step="100"
         v-model="priceRange"
-        :thumb-color="primary"
+        thumb-color="primary"
         :thumb-size="50"
         thumb-label="always"
         >
@@ -76,7 +76,7 @@
 <div class="main-margin">
 
 <div class="d-flex flex-wrap justify-space-around">
-  <div v-for="yacht in filteredYachts" :key="yacht">
+  <div v-for="yacht in filteredYachts" :key="yacht.id">
   <yacht-card  :yacht="yacht" />
   </div>
 </div>
@@ -113,7 +113,6 @@ import YachtCard from './YachtCard';
     },
     mounted: function () {
         Vue.axios.get('https://boat-charter-vue-default-rtdb.europe-west1.firebasedatabase.app/boats.json').then((resp)=>{
-        console.log(resp.data)
         this.yachts = resp.data
         this.filteredYachts = this.yachts
       })   
