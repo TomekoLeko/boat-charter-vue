@@ -15,6 +15,16 @@
     <p  v-for="paragraph in 5" :key="paragraph">
       {{yacht.text}}
     </p>
+    <router-link to="/yachts">
+     <v-btn
+        color="primary"
+        >
+            <v-icon>
+            mdi-arrow-left
+            </v-icon>
+           Back to yachts
+       </v-btn>
+    </router-link>
     </v-col>
   <v-col cols="5">
   <v-card
@@ -26,7 +36,7 @@
         <v-list-item
         >
           <v-list-item-icon>
-        <v-icon>
+        <v-icon color="primary">
           mdi-account-group
         </v-icon>
           </v-list-item-icon>
@@ -37,7 +47,7 @@
                 <v-list-item
         >
           <v-list-item-icon>
-        <v-icon>
+        <v-icon color="primary">
           mdi-door
         </v-icon>
           </v-list-item-icon>
@@ -58,7 +68,7 @@
           :key="i"
         >
           <v-list-item-icon>
-            <v-icon>
+            <v-icon color="primary">
                mdi-square-rounded</v-icon>
   
           </v-list-item-icon>
@@ -78,7 +88,7 @@
          v-for="(item, id) in yacht.additional" :key="id"
         >
           <v-list-item-icon>
-            <v-icon>
+            <v-icon color="primary">
                mdi-square-rounded</v-icon>
   
           </v-list-item-icon>
