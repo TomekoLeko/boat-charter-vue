@@ -4,28 +4,28 @@
   <v-img class="map-banner-img" src="../assets/banner-map.png" />
   <div id="sotogrande">
           <v-checkbox
-              v-model="sotogrande"
+              v-model="filter.sotogrande"
               label="Sotogrande"
               hide-details
             ></v-checkbox>
   </div>
    <div id="estepona">
           <v-checkbox
-              v-model="estepona"
+              v-model="filter.estepona"
               label="Estepona"
               hide-details
             ></v-checkbox>
   </div>
       <div id="puerto-banus">
           <v-checkbox
-              v-model="banus"
+              v-model="filter.banus"
               label="Puerto Banus"
               hide-details
             ></v-checkbox>
   </div>
         <div id="marbella">
           <v-checkbox
-              v-model="marbella"
+              v-model="filter.marbella"
               label="Marbella"
               hide-details
             ></v-checkbox>
@@ -37,14 +37,14 @@
         <v-text-field
           label="For at least"
           suffix="people"
-          v-model="howManyPeople"
+          v-model="filter.howManyPeople"
         ></v-text-field>
         </v-container>
         <v-container>
         <v-text-field
           label="At least"
           suffix="bedrooms"
-          v-model="howManyBedrooms"
+          v-model="filter.howManyBedrooms"
         ></v-text-field>
         </v-container>
   </v-col>
@@ -52,11 +52,11 @@
   <v-col cols="6" >
     <v-container mt-16>
         <v-range-slider
-        :hint="priceRangeHint"
+        :hint="filter.priceRangeHint"
         max="2000"
         min="0"
         step="100"
-        v-model="priceRange"
+        v-model="filter.priceRange"
         thumb-color="primary"
         :thumb-size="50"
         thumb-label="always"
@@ -90,6 +90,7 @@
 import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+
 Vue.use(VueAxios,axios)
 import YachtCard from './YachtCard';
   export default {
@@ -100,13 +101,7 @@ import YachtCard from './YachtCard';
     },
  data () {
       return {  
-     sotogrande: true,
-     marbella: true,
-     estepona: true,
-     banus: true,   
-     howManyPeople: null,
-     howManyBedrooms: null,
-     priceRange: [0, 2000],
+     filter: {},
      filteredYachts: null,   
      yachts: [{id: 0, title: '',  subtitle: '',bedrooms:1, ppl:1, price:1, port: '', additional: [], img: ''}]   
       }
@@ -114,71 +109,43 @@ import YachtCard from './YachtCard';
     mounted: function () {
         Vue.axios.get('https://boat-charter-vue-default-rtdb.europe-west1.firebasedatabase.app/boats.json').then((resp)=>{
         this.yachts = resp.data
+        this.filter = this.$store.state.filter
         this.filteredYachts = this.yachts
       })   
 },
   computed: {
     priceRangeHint: function () {
-      return 'Price from ' +  this.priceRange[0] + '€ to ' + this.priceRange[1] + '€'
+      return 'Price from ' +  this.filter.priceRange[0] + '€ to ' + this.filter.priceRange[1] + '€'
     }
   },
     methods: {
        filterYachts() {
-        this.filteredYachts = this.yachts.filter(yacht => yacht.ppl >= this.howManyPeople) 
-        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.bedrooms >= this.howManyBedrooms) 
-        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.price >= this.priceRange[0])
-        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.price <= this.priceRange[1])
-        if(!this.banus) {
+        console.log('Filtering method')
+        this.filteredYachts = this.yachts.filter(yacht => yacht.ppl >= this.filter.howManyPeople) 
+        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.bedrooms >= this.filter.howManyBedrooms) 
+        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.price >= this.filter.priceRange[0])
+        this.filteredYachts = this.filteredYachts.filter(yacht => yacht.price <= this.filter.priceRange[1])
+        if(!this.filter.banus) {
         this.filteredYachts = this.filteredYachts.filter(yacht => yacht.port != 'banus')
         }
-        if(!this.marbella) {
+        if(!this.filter.marbella) {
         this.filteredYachts = this.filteredYachts.filter(yacht => yacht.port != 'marbella')
         }
-        if(!this.estepona) {
+        if(!this.filter.estepona) {
         this.filteredYachts = this.filteredYachts.filter(yacht => yacht.port != 'estepona')
         }
-        if(!this.sotogrande) {
+        if(!this.filter.sotogrande) {
         this.filteredYachts = this.filteredYachts.filter(yacht => yacht.port != 'sotogrande')
-        }
-        
+        } 
        }
      },
      watch: {
-    howManyPeople: {
+          filter: {
       handler() {
       this.filterYachts()
-      } 
+      },
+       deep: true   
     },
-        howManyBedrooms: {
-      handler() {
-      this.filterYachts()
-      } 
-    },
-     priceRange: {
-      handler() {
-      this.filterYachts()
-      }
-    },
-    banus: {
-      handler() {
-      this.filterYachts()
-      }
-    },
-    estepona: {
-      handler() {
-      this.filterYachts()
-      }
-    },
-    marbella: {
-    handler() {
-      this.filterYachts()
-      }
-     },
-    sotogrande: {
-    handler() {
-      this.filterYachts()
-      }
-     },
   },
   }
 </script>
@@ -193,7 +160,6 @@ import YachtCard from './YachtCard';
   position: relative;
   width: 100%;
   /* background-image: url("../assets/banner-map.png"); */
-
 }
 .filters-container {
   width: 60%;

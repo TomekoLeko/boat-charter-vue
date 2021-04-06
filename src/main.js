@@ -12,11 +12,19 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
-    count: 0
+    filter: {
+      sotogrande: true,
+      marbella: true,
+      estepona: true,
+      banus: true,   
+      howManyPeople: null,
+      howManyBedrooms: null,
+      priceRange: [0, 2000],
+    },
   },
   mutations: {
-    increment (state) {
-      state.count++
+    changeFilter(filter) {
+      this.state.filter = filter
     }
   }
 })
