@@ -21,10 +21,14 @@ const store = new Vuex.Store({
       howManyBedrooms: null,
       priceRange: [0, 2000],
     },
+    filteredYachts: null
   },
   mutations: {
-    changeFilter(filter) {
-      this.state.filter = filter
+    // changeFilter(filter) {
+    //   this.state.filter = filter
+    // },
+    setFilteredYachts(state, filteredYachts){
+      state.filteredYachts = filteredYachts
     }
   }
 })

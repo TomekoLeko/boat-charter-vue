@@ -100,6 +100,9 @@
   </v-card>
      </v-col>
   </v-row> 
+  <v-row v-if="this.$store.state.filteredYachts.length>1">
+   <card-slider :currentYachtId="this.yacht.id" class="mx-auto"> </card-slider>
+  </v-row>
 </div>
 </template>
 
@@ -109,11 +112,12 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import YachtGallery from './YachtGallery.vue';
 import Booking from './Booking'
+import CardSlider from './CardSlider.vue';
 Vue.use(VueAxios,axios)
 
   export default {
 
-components: {YachtGallery, Booking},
+components: {YachtGallery, Booking, CardSlider},
  data () {
       return {  
     yacht: {},

@@ -110,7 +110,13 @@ import YachtCard from './YachtCard';
         Vue.axios.get('https://boat-charter-vue-default-rtdb.europe-west1.firebasedatabase.app/boats.json').then((resp)=>{
         this.yachts = resp.data
         this.filter = this.$store.state.filter
-        this.filteredYachts = this.yachts
+        if(this.$store.state.filteredYachts) {
+          this.filteredYachts = this.$store.state.filteredYachts
+        }
+        else {
+          this.filteredYachts = this.yachts
+        }
+        
       })   
 },
   computed: {
@@ -137,7 +143,9 @@ import YachtCard from './YachtCard';
         if(!this.filter.sotogrande) {
         this.filteredYachts = this.filteredYachts.filter(yacht => yacht.port != 'sotogrande')
         } 
+        this.$store.commit('setFilteredYachts', this.filteredYachts)
        }
+      
      },
      watch: {
           filter: {
