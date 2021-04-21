@@ -100,7 +100,7 @@
   </v-card>
      </v-col>
   </v-row> 
-  <v-row v-if="this.$store.state.filteredYachts.length>1">
+  <v-row >
    <card-slider :currentYachtId="this.yacht.id" class="mx-auto"> </card-slider>
   </v-row>
 </div>
@@ -119,17 +119,23 @@ Vue.use(VueAxios,axios)
 
 components: {YachtGallery, Booking, CardSlider},
  data () {
-      return {  
+      return { 
+    yachts: [{id: 0, title: '',  subtitle: '',bedrooms:1, ppl:1, price:1, port: '', additional: [], img: ''}], 
     yacht: {},
     booking: false,
     carouselIndex: 0,
       }
       },
-    mounted: function () {
-        let url = 'https://boat-charter-vue-default-rtdb.europe-west1.firebasedatabase.app/boats/' + this.$route.params.id + '.json'
-        Vue.axios.get(url).then((resp)=>{
-        this.yacht = resp.data
-    })   
+beforeMount: function () {
+    let url = 'https://boat-charter-vue-default-rtdb.europe-west1.firebasedatabase.app/boats/' + '.json'
+    Vue.axios.get(url).then((resp)=>{
+    this.yachts = resp.data
+    this.yacht = this.yachts[this.$route.params.id]
+    if(!this.filteredYachts) {
+      this.filteredYachts = this.yachts
+    }
+
+    }) 
 },
   }
 

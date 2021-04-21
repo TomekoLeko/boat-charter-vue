@@ -23,20 +23,32 @@
 
 <script>
 
+import Vue from 'vue';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+
+Vue.use(VueAxios,axios)
 import YachtCard from './YachtCard';
 
   export default {
     components: { YachtCard,},
     data: () => ({
-
       filteredYachts: null, 
     }),
     props: ['currentYachtId'],
     mounted: function () {
-      console.log("CardSlider mounted")
         if(this.$store.state.filteredYachts) {
           this.filteredYachts = this.$store.state.filteredYachts
-        } 
+           this.filteredYachts = this.filteredYachts.filter(yacht => yacht.id != this.$route.params.id)
+        }
+        else {
+        let url = 'https://boat-charter-vue-default-rtdb.europe-west1.firebasedatabase.app/boats/' + '.json'
+        Vue.axios.get(url).then((resp)=>{
+        this.filteredYachts = resp.data
+         this.filteredYachts = this.filteredYachts.filter(yacht => yacht.id != this.$route.params.id)
+    }) 
+        }
+     
 },
   }
 </script>x
