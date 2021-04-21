@@ -5,7 +5,7 @@
      <h1>{{yacht.title}}</h1>
 <h2>{{yacht.subtitle}}</h2>
     <div class="booking-button">
-    <booking :dialog="booking"  :yacht="yacht" text="BOOK THIS BOAT"  >
+    <booking v-if="yacht.ppl" :dialog="booking"  :yacht="yacht" text="BOOK THIS BOAT"  >
     </booking>
   </div>     
   </div>
