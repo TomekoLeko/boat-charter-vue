@@ -99,12 +99,12 @@
       </v-slider>
     </v-card-text>
   </v-card>
-  <!-- <v-autocomplete
+  <v-autocomplete
       :items="additionalNames"
       label="Additional services"
       multiple
       class="mt-10"
-    ></v-autocomplete> -->
+    ></v-autocomplete>
 
 
 
